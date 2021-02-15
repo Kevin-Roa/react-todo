@@ -10,7 +10,8 @@ function App() {
 	const [status, setStatus] = useState('all');
 	const [filteredTodos, setFilteredTodos] = useState([]);
 
-	useEffect(() => {
+	// Filter the todos based on the status
+	const filterHandler = () => {
 		switch (status) {
 			case 'completed':
 				setFilteredTodos(todos.filter((todo) => todo.completed === true));
@@ -22,6 +23,31 @@ function App() {
 				setFilteredTodos(todos);
 				break;
 		}
+	};
+
+	// Save todos locally
+	const saveLocalTodos = () => {
+		localStorage.setItem('todos', JSON.stringify(todos));
+	};
+
+	// Get the locally saved todos
+	const getLocalTodos = () => {
+		if (localStorage.getItem('todos') === null) {
+			localStorage.setItem('todos', JSON.stringify([]));
+		} else {
+			setTodos(JSON.parse(localStorage.getItem('todos', JSON.stringify(todos))));
+		}
+	};
+
+	// Get todos from localStorage on startup
+	useEffect(() => {
+		getLocalTodos();
+	}, []);
+
+	// Update filtered todos every time todos or status changes
+	useEffect(() => {
+		filterHandler();
+		saveLocalTodos();
 	}, [todos, status]);
 
 	return (
