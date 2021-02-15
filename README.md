@@ -1,8 +1,6 @@
 # **React Todo List**
 
-## Description
-
-> A simple todo list build using React. Features dynamically adding/removing elements from the list, element filtering, as well as saving/retrieving elements from local storage. Created by following a youtube tutorial by "Dev Ed."
+> A simple todo list built using React. Features dynamically adding/removing elements from the list, element filtering, as well as saving/retrieving elements from local storage. Created by following a youtube tutorial by "Dev Ed."
 
 ## Try it out
 
